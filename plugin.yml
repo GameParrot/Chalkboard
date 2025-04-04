@@ -4,4 +4,5 @@ version: 0.0.1
 main: GameParrot\Chalkboard\Main
 api: 5.25.2
 src-namespace-prefix: GameParrot\Chalkboard
+icon: icon.png
 ...
