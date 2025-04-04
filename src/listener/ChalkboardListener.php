@@ -18,7 +18,7 @@ use pocketmine\network\PacketHandlingException;
 use function get_debug_type;
 
 class ChalkboardListener implements Listener {
-	public function onDataPacket(DataPacketReceiveEvent $event) {
+	public function onDataPacket(DataPacketReceiveEvent $event) : void {
 		$packet = $event->getPacket();
 		if ($packet->pid() !== BlockActorDataPacket::NETWORK_ID) {
 			return;
@@ -36,7 +36,7 @@ class ChalkboardListener implements Listener {
 		$block = $player->getLocation()->getWorld()->getBlock($pos);
 		$nbt = $packet->nbt->getRoot();
 		if (!($nbt instanceof CompoundTag)) {
-			return false;
+			return;
 		}
 
 		if ($block instanceof Chalkboard) {
