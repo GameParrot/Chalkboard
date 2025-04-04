@@ -22,7 +22,7 @@ class ItemsSetup {
 			return $item->getSize();
 		});
 
-		$group = new CreativeGroup("Chalkoards", ExtraVanillaItems::BOARD()->setSize(2));
+		$group = new CreativeGroup("Chalkboards", ExtraVanillaItems::BOARD()->setSize(2));
 		CreativeInventory::getInstance()->add(ExtraVanillaItems::BOARD()->setSize(0), CreativeCategory::ITEMS, $group);
 		CreativeInventory::getInstance()->add(ExtraVanillaItems::BOARD()->setSize(1), CreativeCategory::ITEMS, $group);
 		CreativeInventory::getInstance()->add(ExtraVanillaItems::BOARD()->setSize(2), CreativeCategory::ITEMS, $group);
