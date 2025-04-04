@@ -33,6 +33,9 @@ class Chalkboard extends Transparent {
 	public function readStateFromWorld() : Block {
 		parent::readStateFromWorld();
 		$tile = $this->getBaseTile();
+		if ($tile === null) {
+			return $this;
+		}
 		$this->text = $tile->getText();
 		$this->ownerId = $tile->getOwnerUUID();
 		$this->locked = $tile->getLocked();
@@ -45,6 +48,9 @@ class Chalkboard extends Transparent {
 	public function writeStateToWorld() : void {
 		parent::writeStateToWorld();
 		$tile = $this->getBaseTile();
+		if ($tile === null) {
+			return;
+		}
 		$tile->setText($this->text);
 		$tile->setOwnerUUID($this->ownerId);
 		$tile->setLocked($this->locked);
@@ -72,12 +78,16 @@ class Chalkboard extends Transparent {
 		return $this->direction;
 	}
 
-	private function getBaseTile() : ChalkboardBlock {
+	private function getBaseTile() : ?ChalkboardBlock {
 		$tile = $this->position->getWorld()->getTile($this->position);
-		assert($tile instanceof ChalkboardBlock);
+		if(!$tile instanceof ChalkboardBlock) {
+			return null;
+		}
 		if (!$tile->isBase()) {
 			$tile = $this->position->getWorld()->getTile($tile->getBasePos());
-			assert($tile instanceof ChalkboardBlock);
+			if(!$tile instanceof ChalkboardBlock) {
+				return null;
+			}
 		}
 		return $tile;
 	}
