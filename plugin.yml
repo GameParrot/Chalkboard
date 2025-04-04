@@ -1,6 +1,6 @@
 ---
 name: Chalkboard
-version: 0.0.1
+version: 1.0.0
 main: GameParrot\Chalkboard\Main
 api: 5.16.0
 src-namespace-prefix: GameParrot\Chalkboard
